@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mate Note Premium</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="modal-overlay" style="display: flex">
+      <div class="modal-content login-box">
+        <h2>🔐 Mate Note</h2>
+        <div class="pw-guide">
+          <p>• 최소 5자 ~ 20자 이내</p>
+          <p>• 알파벳(영어) 필수 포함</p>
+          <p>• 숫자 및 특수문자 가능</p>
+        </div>
+        <div class="login-inputs">
+          <input type="text" id="username-input" placeholder="아이디" />
+          <input type="password" id="password-input" placeholder="비밀번호" />
+        </div>
+        <button id="login-btn">입장하기</button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-title">📒 Mate Note</div>
+        <ul class="category-list">
+          <li class="category-item active" data-category="홈">⌂ 홈</li>
+          <li class="category-item" data-category="국어공식">📖 국어공식</li>
+          <li class="category-item" data-category="영어공식">🔤 영어공식</li>
+          <li class="category-item" data-category="수학공식">➕ 수학공식</li>
+          <li class="category-item" data-category="캘린더">📅 캘린더</li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <div id="user-display"></div>
+        <button id="logout-btn">로그아웃</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1 id="current-category-title">홈</h1>
+
+      <div id="home-promo" class="promo-container">
+        <div
+          class="promo-card math"
+          onclick="changeCategoryViaPromo('수학공식')"
+        >
+          <div class="promo-badge">Formula</div>
+          <h3>핵심 공식 마스터</h3>
+          <p>복잡한 수식을 나만의 언어로 정리하고<br />언제든 꺼내보세요.</p>
+          <span class="promo-link">정리하러 가기 →</span>
+        </div>
+        <div class="promo-card cal" onclick="changeCategoryViaPromo('캘린더')">
+          <div class="promo-badge">Schedule</div>
+          <h3>스마트한 일정 관리</h3>
+          <p>중요한 시험 일과 학습 계획을<br />한눈에 파악하세요.</p>
+          <span class="promo-link">기록하러 가기 →</span>
+        </div>
+      </div>
+
+      <div id="calendar-view" style="display: none">
+        <div class="calendar-header">
+          <button id="prev-month" class="nav-btn">◀</button>
+          <h2 id="calendar-month-year"></h2>
+          <button id="next-month" class="nav-btn">▶</button>
+        </div>
+        <div class="calendar-weekdays">
+          <div>일</div>
+          <div>월</div>
+          <div>화</div>
+          <div>수</div>
+          <div>목</div>
+          <div>금</div>
+          <div>토</div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid"></div>
+      </div>
+
+      <div class="input-section" id="input-section" style="display: none">
+        <div class="note-editor">
+          <input type="text" id="note-title" placeholder="제목을 입력하세요" />
+          <div class="divider"></div>
+          <textarea
+            id="note-content"
+            placeholder="공식이나 메모 내용을 상세히 입력하세요..."
+          ></textarea>
+          <div class="editor-footer">
+            <button id="save-btn">노트 저장</button>
+          </div>
+        </div>
+      </div>
+      <div id="notes-list"></div>
+    </div>
+
+    <div id="event-modal" class="modal-overlay">
+      <div class="modal-content event-popup">
+        <div class="modal-header">
+          <span id="event-date-title">날짜</span>
+          <h4>오늘의 일정</h4>
+        </div>
+        <div class="event-input-wrapper">
+          <input
+            type="text"
+            id="event-input"
+            placeholder="무엇을 해야 하나요?"
+          />
+        </div>
+        <div class="modal-btns">
+          <button id="event-cancel-btn" class="secondary">취소</button>
+          <button id="event-save-btn" class="primary">저장하기</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
